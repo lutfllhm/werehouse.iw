@@ -123,8 +123,21 @@ INSERT IGNORE INTO users (id, username, password, full_name, email, role) VALUES
 `;
 
 async function runMigration() {
+  let connection;
   try {
     console.log('🔄 Checking database tables...');
+
+    // Test connection first
+    try {
+      connection = await db.getConnection();
+      console.log('✅ Database connection successful');
+      connection.release();
+    } catch (connError) {
+      console.error('❌ Database connection failed:', connError.message);
+      console.error('   Please check your database environment variables:');
+      console.error('   - DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME');
+      throw connError;
+    }
 
     // Split SQL statements
     const statements = SCHEMA_SQL

@@ -57,7 +57,12 @@ app.use((err, req, res, next) => {
 // ==================== START SERVER ====================
 
 // Run migration before starting server
-runMigration().then(() => {
+runMigration().then((success) => {
+  if (!success) {
+    console.warn('⚠️  Migration failed, but server will continue to start');
+    console.warn('⚠️  Please check database configuration and restart');
+  }
+  
   app.listen(PORT, HOST, () => {
     console.log(`Server berjalan di port ${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
@@ -78,6 +83,11 @@ runMigration().then(() => {
     }
   });
 }).catch(error => {
-  console.error('Failed to start server:', error);
-  process.exit(1);
+  console.error('❌ Failed to start server:', error);
+  console.error('⚠️  Starting server anyway...');
+  
+  app.listen(PORT, HOST, () => {
+    console.log(`Server berjalan di port ${PORT} (migration failed)`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  });
 });

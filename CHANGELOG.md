@@ -12,17 +12,26 @@ All notable changes to iware Warehouse Management System will be documented in t
   - Migration script: `backend/scripts/migrate.js`
   - Integrated into server startup process
 
+### Fixed
+- 🐛 **Railway Migration Path Issue** - Fixed "ENOENT: no such file or directory" error
+  - Created `migrate-embedded.js` with embedded SQL schema
+  - No longer depends on external schema.sql file
+  - Works reliably across all environments (local, Railway, VPS)
+  - Includes automatic seed data insertion
+
 ### Changed
 - Updated `backend/server.js` to run migration before starting server
 - Updated deployment documentation with auto-migration information
 - Enhanced README with auto-migration details
+- Migration now uses embedded schema for better portability
 
 ### Technical Details
 - Migration runs automatically when backend starts
-- Skips CREATE DATABASE and USE statements (uses configured database)
-- Ignores "table already exists" errors
+- Uses `CREATE TABLE IF NOT EXISTS` for idempotent operations
+- Uses `INSERT IGNORE` for seed data (no duplicate errors)
 - Logs migration progress and table count
 - Fails gracefully if migration encounters errors
+- Includes default company info and admin user
 
 ## [1.0.0] - 2024-01-22
 
