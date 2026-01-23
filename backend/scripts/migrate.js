@@ -15,8 +15,30 @@ async function runMigration() {
   try {
     console.log('🔄 Checking database tables...');
 
-    // Baca file schema.sql
-    const schemaPath = path.join(__dirname, '../../database/schema.sql');
+    // Baca file schema.sql - coba beberapa path
+    let schemaPath = path.join(__dirname, '../../database/schema.sql');
+    
+    // Jika tidak ada, coba path alternatif (untuk Railway)
+    if (!fs.existsSync(schemaPath)) {
+      schemaPath = path.join(__dirname, '../../../database/schema.sql');
+    }
+    
+    // Jika masih tidak ada, coba dari root
+    if (!fs.existsSync(schemaPath)) {
+      schemaPath = path.join(process.cwd(), 'database/schema.sql');
+    }
+    
+    // Jika masih tidak ada, coba relative dari backend
+    if (!fs.existsSync(schemaPath)) {
+      schemaPath = path.join(process.cwd(), '../database/schema.sql');
+    }
+    
+    console.log(`📁 Schema path: ${schemaPath}`);
+    
+    if (!fs.existsSync(schemaPath)) {
+      throw new Error(`Schema file not found. Tried: ${schemaPath}`);
+    }
+    
     const schema = fs.readFileSync(schemaPath, 'utf8');
 
     // Split SQL statements (pisahkan berdasarkan semicolon)

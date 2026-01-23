@@ -18,7 +18,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const routes = require('./routes');
-const runMigration = require('./scripts/migrate');
+const runMigration = require('./scripts/migrate-embedded');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
