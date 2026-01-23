@@ -180,6 +180,8 @@ async function initDatabase() {
     console.log('\nYou can now login with:');
     console.log('  Username: admin');
     console.log('  Password: iware123');
+    
+    process.exit(0);
 
   } catch (error) {
     console.error('❌ Error:', error.message);

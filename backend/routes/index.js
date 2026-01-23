@@ -25,6 +25,15 @@ const rekapController = require('../controllers/rekapController');
 // ==================== PUBLIC ROUTES ====================
 // Route ini bisa diakses tanpa login
 
+// Health check endpoint
+router.get('/health', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'iware API is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Informasi perusahaan (untuk halaman publik)
 router.get('/company', companyController.getCompanyInfo);
 

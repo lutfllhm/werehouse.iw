@@ -7,6 +7,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "init-db": "node scripts/init-db.js",
+    "test-db": "node scripts/test-connection.js",
     "generate-password": "node scripts/generatePassword.js",
     "seed": "node scripts/seedTransactions.js",
     "seed-items": "node scripts/seedTransactionItems.js"
