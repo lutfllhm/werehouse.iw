@@ -7,6 +7,10 @@ export default defineConfig({
     host: '0.0.0.0', // Allow network access
     port: 5173,
     strictPort: true,
+    allowedHosts: [
+      'werehouse-iw.up.railway.app',
+      '.railway.app'
+    ],
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
