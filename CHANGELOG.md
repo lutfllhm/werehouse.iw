@@ -2,6 +2,28 @@
 
 All notable changes to iware Warehouse Management System will be documented in this file.
 
+## [1.1.0] - 2026-01-23
+
+### Added
+- ✨ **Auto-Migration System** - Database tables now automatically created on server startup
+  - No need to manually import schema.sql anymore
+  - Idempotent migration (safe to run multiple times)
+  - Automatic table verification and logging
+  - Migration script: `backend/scripts/migrate.js`
+  - Integrated into server startup process
+
+### Changed
+- Updated `backend/server.js` to run migration before starting server
+- Updated deployment documentation with auto-migration information
+- Enhanced README with auto-migration details
+
+### Technical Details
+- Migration runs automatically when backend starts
+- Skips CREATE DATABASE and USE statements (uses configured database)
+- Ignores "table already exists" errors
+- Logs migration progress and table count
+- Fails gracefully if migration encounters errors
+
 ## [1.0.0] - 2024-01-22
 
 ### Added

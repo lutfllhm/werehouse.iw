@@ -1,82 +1,218 @@
-# Scripts untuk Database Seeding
+# Backend Scripts
 
-## 📝 Daftar Script
+Kumpulan utility scripts untuk backend iware Warehouse Management System.
 
-### 1. generatePassword.js
-Generate hash password untuk user baru.
+## 🔄 Migration Scripts
 
+### migrate.js
+
+**Auto-Migration Script** - Membuat semua tabel database secara otomatis.
+
+**Fitur:**
+- ✅ Otomatis dijalankan saat server start
+- ✅ Idempotent (aman dijalankan berkali-kali)
+- ✅ Skip jika tabel sudah ada
+- ✅ Logging progress dan hasil
+- ✅ Error handling yang baik
+
+**Cara Kerja:**
+1. Membaca file `database/schema.sql`
+2. Parse SQL statements
+3. Skip CREATE DATABASE dan USE statements
+4. Eksekusi setiap CREATE TABLE statement
+5. Ignore error "table already exists"
+6. Verify jumlah tabel yang berhasil dibuat
+
+**Manual Run:**
 ```bash
-npm run generate-password
+node scripts/migrate.js
 ```
 
-### 2. seedTransactions.js
-Menambahkan data dummy produk dan transaksi.
-
+**Test Migration:**
 ```bash
-npm run seed
+node scripts/test-migrate.js
 ```
 
-**Data yang ditambahkan:**
-- 15 Produk (Printer Label, Kertas Label, Ribbon)
-- 10 Transaksi dengan berbagai status
+### test-migrate.js
 
-### 3. seedTransactionItems.js
-Menambahkan detail item untuk setiap transaksi (diperlukan untuk grafik produk terlaris).
+Script untuk test migration secara standalone tanpa menjalankan server.
 
+**Usage:**
 ```bash
-npm run seed-items
+cd backend
+node scripts/test-migrate.js
 ```
 
-**Data yang ditambahkan:**
-- 2-5 item random untuk setiap transaksi
-- Quantity dan harga otomatis
+## 🔐 Security Scripts
 
-## 🚀 Cara Penggunaan
+### generatePassword.js
 
-### Setup Awal (Database Kosong)
+Generate bcrypt hash untuk password.
 
-1. **Import schema database:**
+**Usage:**
+```bash
+node scripts/generatePassword.js
+# Masukkan password saat diminta
+# Output: bcrypt hash yang bisa disimpan di database
+```
+
+**Example:**
+```bash
+$ node scripts/generatePassword.js
+Enter password: iware123
+Hashed password: $2a$10$5gF4iUqdF/nnFKjlkz7U8O9awEl3LPuKVjuk9gOFHgYtmzDTHcJCy
+```
+
+## 📊 Seeding Scripts
+
+### seedTransactions.js
+
+Generate sample transaction data untuk testing.
+
+**Usage:**
+```bash
+node scripts/seedTransactions.js
+```
+
+**Output:**
+- Membuat 10 sample transactions
+- Random dates dalam 30 hari terakhir
+- Random customer names
+- Random amounts
+- Random status
+
+### seedTransactionItems.js
+
+Generate sample transaction items untuk testing.
+
+**Usage:**
+```bash
+node scripts/seedTransactionItems.js
+```
+
+**Output:**
+- Membuat items untuk setiap transaction
+- Random products dari database
+- Random quantities
+- Calculated subtotals
+
+**Catatan:** Jalankan `seedTransactions.js` terlebih dahulu sebelum `seedTransactionItems.js`
+
+## 🔧 Utility Scripts (Root Level)
+
+### ../scripts/generate-jwt-secret.js
+
+Generate random JWT secret untuk production.
+
+**Usage:**
+```bash
+node ../scripts/generate-jwt-secret.js
+```
+
+**Output:**
+```
+Generated JWT Secret:
+9557793ecf8c57f698c1ff3bcab5301908d8666bba586e91d049bd05d7c8a9bbb4ba7a6951780a3ce6153a63cea85bdde6c4042d877dfbceb459483b38ad542
+
+Copy this to your .env file:
+JWT_SECRET=9557793ecf8c57f698c1ff3bcab5301908d8666bba586e91d049bd05d7c8a9bbb4ba7a6951780a3ce6153a63cea85bdde6c4042d877dfbceb459483b38ad542
+```
+
+## 📝 Best Practices
+
+### Development
+
+1. **First Time Setup:**
    ```bash
-   mysql -u root -p iware_warehouse < database/schema.sql
+   # 1. Setup database
+   mysql -u root -p
+   CREATE DATABASE iware_warehouse;
+   EXIT;
+   
+   # 2. Configure .env
+   cp .env.example .env
+   nano .env
+   
+   # 3. Start server (migration runs automatically)
+   npm start
    ```
 
-2. **Seed produk dan transaksi:**
+2. **Adding Sample Data:**
    ```bash
-   cd backend
-   npm run seed
+   node scripts/seedTransactions.js
+   node scripts/seedTransactionItems.js
    ```
 
-3. **Seed transaction items (untuk grafik):**
+### Production
+
+1. **Railway/VPS Deployment:**
+   - Migration runs automatically on first deploy
+   - No manual schema import needed
+   - Check logs to verify migration success
+
+2. **Manual Migration (if needed):**
    ```bash
-   npm run seed-items
+   # Via Railway CLI
+   railway run node scripts/migrate.js
+   
+   # Via SSH on VPS
+   cd /var/www/werehouse.iw/backend
+   node scripts/migrate.js
    ```
 
-4. **Jalankan aplikasi:**
+3. **Verify Migration:**
    ```bash
-   # Terminal 1 - Backend
-   cd backend
-   npm run dev
-
-   # Terminal 2 - Frontend
-   cd frontend
-   npm run dev
+   # Check tables
+   mysql -u user -p database -e "SHOW TABLES;"
+   
+   # Check table count
+   mysql -u user -p database -e "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'iware_warehouse';"
    ```
 
-5. **Login:**
-   - URL: http://localhost:5173
-   - Username: `admin`
-   - Password: `iware123`
+## 🐛 Troubleshooting
 
-## 📊 Grafik Dashboard
+### Migration Failed
 
-Setelah menjalankan `seed-items`, dashboard akan menampilkan:
-- ✅ Transaksi Bulanan (Line Chart)
-- ✅ Pendapatan Bulanan (Bar Chart)
-- ✅ Distribusi Status Transaksi (Pie Chart)
-- ✅ Produk Terlaris (Horizontal Bar Chart)
+**Error: "Cannot find module '../config/database'"**
+```bash
+# Make sure you're in backend directory
+cd backend
+node scripts/migrate.js
+```
 
-## ⚠️ Catatan
+**Error: "Access denied for user"**
+```bash
+# Check .env file
+# Verify DB_USER, DB_PASSWORD, DB_NAME
+nano .env
+```
 
-- Jalankan `seed` terlebih dahulu sebelum `seed-items`
-- Script `seed-items` memerlukan data transaksi dan produk yang sudah ada
-- Jika grafik tidak muncul, pastikan sudah menjalankan `seed-items`
+**Error: "Unknown database"**
+```bash
+# Create database first
+mysql -u root -p
+CREATE DATABASE iware_warehouse;
+EXIT;
+```
+
+### Seeding Failed
+
+**Error: "No products found"**
+```bash
+# Make sure products table has data
+# Either sync from Accurate or insert manually
+mysql -u root -p iware_warehouse
+INSERT INTO products (product_name, stock_quantity, price) VALUES ('Sample Product', 100, 50000);
+EXIT;
+```
+
+## 📚 Related Documentation
+
+- [Main README](../../README.md) - Project overview
+- [Deployment Guide](../../DEPLOYMENT.md) - Deployment instructions
+- [Changelog](../../CHANGELOG.md) - Version history
+- [Database Schema](../../database/schema.sql) - Database structure
+
+---
+
+**Note:** Auto-migration adalah fitur baru di v1.1.0. Untuk versi sebelumnya, schema harus diimport manual.

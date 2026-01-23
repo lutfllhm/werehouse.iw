@@ -18,6 +18,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const routes = require('./routes');
+const runMigration = require('./scripts/migrate');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -55,22 +56,28 @@ app.use((err, req, res, next) => {
 
 // ==================== START SERVER ====================
 
-app.listen(PORT, HOST, () => {
-  console.log(`Server berjalan di port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Local: http://localhost:${PORT}`);
-  
-  // Tampilkan network URL jika bukan localhost
-  if (HOST === '0.0.0.0') {
-    const os = require('os');
-    const networkInterfaces = os.networkInterfaces();
+// Run migration before starting server
+runMigration().then(() => {
+  app.listen(PORT, HOST, () => {
+    console.log(`Server berjalan di port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Local: http://localhost:${PORT}`);
     
-    Object.keys(networkInterfaces).forEach((interfaceName) => {
-      networkInterfaces[interfaceName].forEach((iface) => {
-        if (iface.family === 'IPv4' && !iface.internal) {
-          console.log(`Network: http://${iface.address}:${PORT}`);
-        }
+    // Tampilkan network URL jika bukan localhost
+    if (HOST === '0.0.0.0') {
+      const os = require('os');
+      const networkInterfaces = os.networkInterfaces();
+      
+      Object.keys(networkInterfaces).forEach((interfaceName) => {
+        networkInterfaces[interfaceName].forEach((iface) => {
+          if (iface.family === 'IPv4' && !iface.internal) {
+            console.log(`Network: http://${iface.address}:${PORT}`);
+          }
+        });
       });
-    });
-  }
+    }
+  });
+}).catch(error => {
+  console.error('Failed to start server:', error);
+  process.exit(1);
 });
