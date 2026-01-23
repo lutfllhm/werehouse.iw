@@ -1,0 +1,22 @@
+# Backend Railway ignore
+
+# Development
+node_modules/
+*.log
+
+# Testing
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Documentation
+*.md
+!README.md
+
+# Scripts (optional, keep if needed for production)
+# scripts/
+
+# Local env
+.env
+.env.local

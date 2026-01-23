@@ -1,0 +1,20 @@
+{
+  "name": "iware-warehouse",
+  "version": "1.0.0",
+  "description": "Warehouse Management System - iware",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "railway:check": "node scripts/check-railway-ready.js",
+    "railway:jwt": "node scripts/generate-jwt-secret.js"
+  },
+  "keywords": ["warehouse", "inventory", "accurate"],
+  "author": "iware",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

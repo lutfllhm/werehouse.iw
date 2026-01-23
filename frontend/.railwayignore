@@ -1,0 +1,23 @@
+# Frontend Railway ignore
+
+# Development
+node_modules/
+*.log
+
+# Source files (will be built)
+# Keep these for build process
+
+# Testing
+test/
+tests/
+*.test.js
+*.test.jsx
+*.spec.js
+*.spec.jsx
+
+# Documentation
+*.md
+
+# Local env
+.env
+.env.local
