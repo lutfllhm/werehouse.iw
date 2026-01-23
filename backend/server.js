@@ -18,7 +18,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 const routes = require('./routes');
-const runMigration = require('./scripts/migrate-embedded');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -56,38 +55,23 @@ app.use((err, req, res, next) => {
 
 // ==================== START SERVER ====================
 
-// Run migration before starting server
-runMigration().then((success) => {
-  if (!success) {
-    console.warn('⚠️  Migration failed, but server will continue to start');
-    console.warn('⚠️  Please check database configuration and restart');
-  }
+// Start server (migration handled by Railway startCommand)
+app.listen(PORT, HOST, () => {
+  console.log(`Server berjalan di port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Local: http://localhost:${PORT}`);
   
-  app.listen(PORT, HOST, () => {
-    console.log(`Server berjalan di port ${PORT}`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`Local: http://localhost:${PORT}`);
+  // Tampilkan network URL jika bukan localhost
+  if (HOST === '0.0.0.0') {
+    const os = require('os');
+    const networkInterfaces = os.networkInterfaces();
     
-    // Tampilkan network URL jika bukan localhost
-    if (HOST === '0.0.0.0') {
-      const os = require('os');
-      const networkInterfaces = os.networkInterfaces();
-      
-      Object.keys(networkInterfaces).forEach((interfaceName) => {
-        networkInterfaces[interfaceName].forEach((iface) => {
-          if (iface.family === 'IPv4' && !iface.internal) {
-            console.log(`Network: http://${iface.address}:${PORT}`);
-          }
-        });
+    Object.keys(networkInterfaces).forEach((interfaceName) => {
+      networkInterfaces[interfaceName].forEach((iface) => {
+        if (iface.family === 'IPv4' && !iface.internal) {
+          console.log(`Network: http://${iface.address}:${PORT}`);
+        }
       });
-    }
-  });
-}).catch(error => {
-  console.error('❌ Failed to start server:', error);
-  console.error('⚠️  Starting server anyway...');
-  
-  app.listen(PORT, HOST, () => {
-    console.log(`Server berjalan di port ${PORT} (migration failed)`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  });
+    });
+  }
 });
