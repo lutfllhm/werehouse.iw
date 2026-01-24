@@ -27,7 +27,7 @@ const HomePage = () => {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-slow-zoom"
             style={{
-              backgroundImage: 'url(/img/bg.jpeg)',
+              backgroundImage: 'url(/img/bg.jpg)',
             }}
           />
           {/* Dark Overlay for better text readability */}

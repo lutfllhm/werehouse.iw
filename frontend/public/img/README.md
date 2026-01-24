@@ -2,9 +2,9 @@
 
 ## 📁 Required Files
 
-### 1. bg.jpeg
+### 1. bg.jpg
 **Background image untuk homepage**
-- Path: `frontend/public/img/bg.jpeg`
+- Path: `frontend/public/img/bg.jpg`
 - Format: JPEG/JPG
 - Resolusi: Minimal 1920x1080px
 - Ukuran: Maksimal 2MB
@@ -66,7 +66,7 @@ File Size:  < 1MB
 
 ```
 frontend/public/img/
-├── bg.jpeg          # Background homepage
+├── bg.jpg           # Background homepage
 ├── logo.png         # Company logo
 ├── .gitkeep         # Keep folder in git
 └── README.md        # This file
@@ -87,14 +87,14 @@ Atau drag & drop file baru ke folder `frontend/public/img/` dan rename menjadi `
 ### Menambahkan Background
 ```bash
 # Copy background
-cp /path/to/your/bg.jpeg frontend/public/img/bg.jpeg
+cp /path/to/your/bg.jpg frontend/public/img/bg.jpg
 ```
 
 ## ✅ Verification
 
 Status file saat ini:
 - [x] `frontend/public/img/logo.png` - ✅ **SUDAH ADA** (Logo iware biru)
-- [ ] `frontend/public/img/bg.jpeg` - ⚠️ **PERLU DITAMBAHKAN**
+- [ ] `frontend/public/img/bg.jpg` - ⚠️ **PERLU DITAMBAHKAN**
 
 Setelah menambahkan background, check:
 - [ ] Background file size < 2MB
@@ -143,4 +143,4 @@ For more details:
 ---
 
 **Logo iware sudah tersedia!** ✅  
-**Tinggal tambahkan bg.jpeg untuk background homepage!** 🎨
+**Tinggal tambahkan bg.jpg untuk background homepage!** 🎨

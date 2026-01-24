@@ -1,5 +1,5 @@
 // Color Configuration
-// Ubah warna di sini untuk menyesuaikan dengan bg.jpeg Anda
+// Ubah warna di sini untuk menyesuaikan dengan bg.jpg Anda
 
 export const colorThemes = {
   // Neutral Gray (Default - cocok untuk semua warna background)
