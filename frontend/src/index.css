@@ -121,6 +121,69 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Performance Optimization - Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Will-change optimization for better performance */
+.animate-float,
+.animate-float-delayed,
+.animate-slow-zoom {
+  will-change: transform;
+}
+
+.animate-fade-in-up,
+.animate-slide-in-left-custom,
+.animate-slide-in-right-custom,
+.animate-slide-in-bottom,
+.animate-zoom-in,
+.animate-rotate-in,
+.animate-bounce-in {
+  will-change: transform, opacity;
+}
+
+.animate-twinkle {
+  will-change: opacity, transform;
+}
+
+.animate-glow {
+  will-change: box-shadow;
+}
+
+/* Remove will-change after animation completes */
+.animation-complete {
+  will-change: auto;
+}
+
+/* Lazy Animation - Initially hidden, visible when in viewport */
+.lazy-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.lazy-animate.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optimize background images */
+.bg-optimized {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
 /* Dashboard Animations */
 @keyframes fadeIn {
   from {

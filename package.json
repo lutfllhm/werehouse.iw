@@ -11,10 +11,15 @@
     "railway:check": "node scripts/check-railway-ready.js",
     "railway:jwt": "node scripts/generate-jwt-secret.js"
   },
-  "keywords": ["warehouse", "inventory", "accurate"],
+  "keywords": [
+    "warehouse",
+    "inventory",
+    "accurate"
+  ],
   "author": "iware",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "sharp": "^0.34.5"
   }
 }

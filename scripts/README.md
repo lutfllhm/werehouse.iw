@@ -27,6 +27,32 @@ npm run railway:jwt
 - Random 128-character hex string
 - Siap copy-paste ke Railway environment variables
 
+### compress-images.js
+Script untuk mengkompress gambar dan mengoptimalkan performa web.
+
+```bash
+# Install dependency dulu
+npm install sharp --save-dev
+
+# Jalankan script
+node scripts/compress-images.js
+```
+
+**Fitur:**
+- Kompress JPG/PNG dengan kualitas optimal (80%)
+- Generate versi WebP (lebih ringan 25-35%)
+- Auto-resize gambar yang terlalu besar
+- Menampilkan statistik kompresi
+
+**Output:**
+- Gambar terkompress disimpan di `frontend/public/img/optimized/`
+- Versi WebP otomatis dibuat untuk setiap gambar
+
+**Tips:**
+- Background images: max 1920x1080px
+- Logo images: max 500x500px
+- Gunakan WebP untuk browser modern
+
 ## Root Scripts (npm commands)
 
 Dari root directory, jalankan:
