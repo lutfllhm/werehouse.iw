@@ -1,0 +1,105 @@
+========================================
+PANDUAN MEMPERBAIKI LOGIN ADMIN
+========================================
+
+MASALAH:
+- Login gagal dengan pesan "Login gagal. Silakan coba lagi"
+- Database MySQL sudah ada di Railway
+- Tabel users sudah ada
+
+PENYEBAB:
+1. Frontend .env masih mengarah ke localhost (✅ SUDAH DIPERBAIKI)
+2. Password hash di database tidak cocok dengan "iware123"
+
+========================================
+CARA TERCEPAT: Update via Railway Dashboard
+========================================
+
+1. Buka Railway Dashboard
+2. Pilih MySQL service
+3. Klik tab "Data"
+4. Klik tabel "users"
+5. Cari row dengan username = "admin"
+6. Klik Edit/Update
+7. Ganti field "password" dengan hash ini (copy persis):
+
+$2a$10$D/s19.cu7IjgZrv6gaKqHOR7nXo773uC1zSpzusGFonMbD1ToXfYm
+
+8. Save/Update
+9. Test login dengan:
+   Username: admin
+   Password: iware123
+
+========================================
+ALTERNATIF: Jalankan SQL Query di Railway
+========================================
+
+1. Buka Railway Dashboard > MySQL > Query tab
+2. Jalankan query ini:
+
+-- Hapus user admin lama
+DELETE FROM users WHERE username = 'admin';
+
+-- Buat user admin baru dengan password yang benar
+INSERT INTO users (username, password, full_name, email, role) 
+VALUES (
+  'admin', 
+  '$2a$10$D/s19.cu7IjgZrv6gaKqHOR7nXo773uC1zSpzusGFonMbD1ToXfYm', 
+  'Administrator', 
+  'admin@iware.com', 
+  'superadmin'
+);
+
+-- Verifikasi
+SELECT id, username, full_name, email, role FROM users WHERE username = 'admin';
+
+========================================
+DEPLOY ULANG FRONTEND
+========================================
+
+Setelah fix password, deploy ulang frontend:
+
+1. Buka Railway Dashboard > Frontend service
+2. Klik "Deploy" atau trigger redeploy
+3. Tunggu sampai selesai
+4. Test login di: https://werehouse-iw-up.railway.app/login
+
+========================================
+VERIFIKASI
+========================================
+
+Login dengan:
+- Username: admin
+- Password: iware123
+
+Jika masih gagal, cek:
+1. Browser Console (F12) - lihat error network
+2. Railway Backend Logs - lihat error server
+3. Pastikan backend service running (status: Active)
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Jika masih tidak bisa login:
+
+1. Cek Backend Logs di Railway:
+   - Buka Backend service > Logs
+   - Cari error saat POST /api/auth/login
+
+2. Cek Frontend Console:
+   - Buka browser (F12) > Console
+   - Cek error saat submit login
+
+3. Test Backend API langsung:
+   curl -X POST https://werehouse-iw-up.railway.app/api/auth/login \
+     -H "Content-Type: application/json" \
+     -d '{"username":"admin","password":"iware123"}'
+
+4. Pastikan environment variables di Railway sudah benar:
+   Backend:
+   - MYSQLHOST, MYSQLPORT, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE
+   - JWT_SECRET
+   
+   Frontend:
+   - VITE_API_URL=https://werehouse-iw-up.railway.app/api

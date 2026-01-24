@@ -4,7 +4,8 @@
  */
 
 const mysql = require('mysql2/promise');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 async function initDatabase() {
   let connection;
@@ -165,7 +166,7 @@ async function initDatabase() {
     // Admin user (password: iware123)
     await connection.execute(`
       INSERT IGNORE INTO users (id, username, password, full_name, email, role) 
-      VALUES (1, 'admin', '$2a$10$5gF4iUqdF/nnFKjlkz7U8O9awEl3LPuKVjuk9gOFHgYtmzDTHcJCy', 'Administrator', 'admin@iware.com', 'superadmin')
+      VALUES (1, 'admin', '$2a$10$D/s19.cu7IjgZrv6gaKqHOR7nXo773uC1zSpzusGFonMbD1ToXfYm', 'Administrator', 'admin@iware.com', 'superadmin')
     `);
     console.log('✓ admin user');
 

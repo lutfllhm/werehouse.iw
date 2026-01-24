@@ -113,4 +113,4 @@ INSERT INTO company_info (company_name, vision, mission, business_field) VALUES
 -- Insert default admin user (password: iware123)
 -- Hash generated with: bcrypt.hashSync('iware123', 10)
 INSERT INTO users (username, password, full_name, email, role) VALUES
-('admin', '$2a$10$5gF4iUqdF/nnFKjlkz7U8O9awEl3LPuKVjuk9gOFHgYtmzDTHcJCy', 'Administrator', 'admin@iware.com', 'superadmin');
+('admin', '$2a$10$D/s19.cu7IjgZrv6gaKqHOR7nXo773uC1zSpzusGFonMbD1ToXfYm', 'Administrator', 'admin@iware.com', 'superadmin');
