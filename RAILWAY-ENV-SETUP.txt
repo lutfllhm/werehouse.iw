@@ -1,0 +1,105 @@
+========================================
+RAILWAY ENVIRONMENT VARIABLES SETUP
+========================================
+
+MASALAH:
+Backend crash dengan error "Host: undefined, Database: undefined"
+Ini karena environment variables MySQL tidak terset di Railway Backend service.
+
+========================================
+SOLUSI: Set Environment Variables di Railway
+========================================
+
+1. Buka Railway Dashboard
+2. Pilih project "werehouse.iw"
+3. Pilih service "Backend" (werehouse.iw)
+
+4. Klik tab "Variables"
+
+5. Tambahkan variables berikut:
+
+   CARA 1 - Reference dari MySQL Service (RECOMMENDED):
+   ------------------------------------------------
+   Klik "Add Variable" > "Add Reference"
+   
+   Variable Name: MYSQLHOST
+   Reference: MySQL > MYSQLHOST
+   
+   Variable Name: MYSQLPORT
+   Reference: MySQL > MYSQLPORT
+   
+   Variable Name: MYSQLUSER
+   Reference: MySQL > MYSQLUSER
+   
+   Variable Name: MYSQLPASSWORD
+   Reference: MySQL > MYSQLPASSWORD
+   
+   Variable Name: MYSQLDATABASE
+   Reference: MySQL > MYSQLDATABASE
+
+   CARA 2 - Copy Manual dari MySQL Service:
+   ------------------------------------------------
+   a. Buka MySQL service > Variables tab
+   b. Copy nilai dari:
+      - MYSQLHOST
+      - MYSQLPORT
+      - MYSQLUSER
+      - MYSQLPASSWORD
+      - MYSQLDATABASE
+   
+   c. Paste ke Backend service > Variables tab
+
+6. Tambahkan variable lainnya:
+
+   JWT_SECRET=2349cf462d02db5b00f0b9efd6ef924400764f7c3a84acf6c52a8371b65d07bed0221712916900bb89141897ded75f8c39816d5282c59cdf9e8376394d9f1df6
+   JWT_EXPIRE=7d
+   NODE_ENV=production
+
+7. Klik "Deploy" atau tunggu auto-redeploy
+
+========================================
+VERIFIKASI
+========================================
+
+1. Tunggu deployment selesai
+2. Cek Deploy Logs - seharusnya tidak ada error "undefined"
+3. Seharusnya muncul:
+   ✅ Connected!
+   ✅ Database already initialized
+   Server berjalan di port 5000
+
+4. Test backend API:
+   https://werehouse-iw-up.railway.app/api/health
+
+========================================
+FRONTEND ENVIRONMENT VARIABLES
+========================================
+
+Pastikan Frontend service juga punya variable:
+
+VITE_API_URL=https://werehouse-iw-up.railway.app/api
+
+Atau reference dari Backend:
+
+VITE_API_URL=${{Backend.RAILWAY_PUBLIC_DOMAIN}}/api
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Jika masih crash:
+
+1. Cek apakah MySQL service sudah running (status: Active)
+2. Cek apakah Backend dan MySQL di project yang sama
+3. Cek apakah variables sudah tersimpan (refresh page)
+4. Trigger manual redeploy Backend service
+5. Cek Build Logs dan Deploy Logs untuk error detail
+
+Jika error "ECONNREFUSED":
+- MySQL service belum ready
+- Tunggu beberapa menit
+- Atau restart MySQL service
+
+Jika error "Access denied":
+- MYSQLUSER atau MYSQLPASSWORD salah
+- Cek ulang di MySQL service variables
