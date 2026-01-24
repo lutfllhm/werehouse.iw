@@ -1,0 +1,150 @@
+========================================
+STEP BY STEP - ISI BACKEND VARIABLES
+========================================
+
+DARI SCREENSHOT ANDA:
+Variable yang sudah ada tapi perlu diperbaiki:
+- JWT_JWURL → HAPUS (typo)
+- MYSQLDATABASE → ISI dengan reference
+- MYSQLHOST → ISI dengan reference
+- MYSQLPASSWORD → ISI dengan reference
+- MYSQLPORT → ISI dengan reference
+- MYSQLUSER → ISI dengan reference
+
+========================================
+STEP 1: HAPUS VARIABLE YANG SALAH
+========================================
+
+1. Cari variable "JWT_JWURL"
+2. Klik titik tiga (...) di sebelah kanan
+3. Klik "Remove"
+4. Confirm
+
+========================================
+STEP 2: ISI MYSQLHOST
+========================================
+
+1. Klik variable "MYSQLHOST"
+2. Klik "Edit" atau icon pensil
+3. Pilih tab "Reference" (bukan "Variable")
+4. Service: pilih "MySQL"
+5. Variable: pilih "MYSQLHOST"
+6. Klik "Update" atau "Save"
+
+Setelah save, value akan berubah jadi: ${{MySQL.MYSQLHOST}}
+
+========================================
+STEP 3: ISI MYSQLPORT
+========================================
+
+1. Klik variable "MYSQLPORT"
+2. Klik "Edit"
+3. Pilih tab "Reference"
+4. Service: "MySQL"
+5. Variable: "MYSQLPORT"
+6. Save
+
+Value: ${{MySQL.MYSQLPORT}}
+
+========================================
+STEP 4: ISI MYSQLUSER
+========================================
+
+1. Klik variable "MYSQLUSER"
+2. Edit → Reference
+3. Service: "MySQL"
+4. Variable: "MYSQLUSER"
+5. Save
+
+Value: ${{MySQL.MYSQLUSER}}
+
+========================================
+STEP 5: ISI MYSQLPASSWORD
+========================================
+
+1. Klik variable "MYSQLPASSWORD"
+2. Edit → Reference
+3. Service: "MySQL"
+4. Variable: "MYSQLPASSWORD"
+5. Save
+
+Value: ${{MySQL.MYSQLPASSWORD}}
+
+========================================
+STEP 6: ISI MYSQLDATABASE
+========================================
+
+1. Klik variable "MYSQLDATABASE"
+2. Edit → Reference
+3. Service: "MySQL"
+4. Variable: "MYSQLDATABASE"
+5. Save
+
+Value: ${{MySQL.MYSQLDATABASE}}
+
+========================================
+STEP 7: TAMBAH JWT_EXPIRE
+========================================
+
+1. Klik "New Variable"
+2. Pilih "Variable" (bukan Reference)
+3. Name: JWT_EXPIRE
+4. Value: 7d
+5. Klik "Add"
+
+========================================
+STEP 8: VERIFIKASI
+========================================
+
+Setelah selesai, Anda harus punya 8 variables:
+
+1. MYSQLHOST       → ${{MySQL.MYSQLHOST}}
+2. MYSQLPORT       → ${{MySQL.MYSQLPORT}}
+3. MYSQLUSER       → ${{MySQL.MYSQLUSER}}
+4. MYSQLPASSWORD   → ${{MySQL.MYSQLPASSWORD}}
+5. MYSQLDATABASE   → ${{MySQL.MYSQLDATABASE}}
+6. JWT_SECRET      → ••••••••••••••••••••
+7. JWT_EXPIRE      → 7d
+8. NODE_ENV        → production
+
+========================================
+STEP 9: DEPLOY
+========================================
+
+1. Backend akan auto-redeploy setelah save variables
+2. Atau klik "Deploy" manual
+3. Tunggu sampai status "Active"
+4. Cek Deploy Logs untuk memastikan tidak ada error
+
+========================================
+STEP 10: TEST
+========================================
+
+Buka browser, test API:
+https://werehouse-iw-up.railway.app/api/health
+
+Seharusnya return:
+{
+  "status": "OK",
+  "message": "iware API is running",
+  "timestamp": "2026-01-24T..."
+}
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Jika masih error "undefined":
+- Refresh halaman Variables
+- Pastikan semua variables tersimpan
+- Trigger manual redeploy
+- Tunggu 1-2 menit untuk Railway sync
+
+Jika error "ECONNREFUSED":
+- MySQL service belum ready
+- Restart MySQL service
+- Tunggu beberapa menit
+
+Jika backend masih crash:
+- Cek Deploy Logs untuk error detail
+- Screenshot dan tanyakan lagi
