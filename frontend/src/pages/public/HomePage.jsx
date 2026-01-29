@@ -101,20 +101,22 @@ const HomePage = () => {
             </div>
             
             {/* Animated Buttons with Hover Effects */}
-            <div className={`flex flex-col sm:flex-row justify-center gap-4 ${heroContent.isVisible ? 'animate-bounce-in delay-600' : 'opacity-0'}`}>
+            <div className={`flex flex-col sm:flex-row justify-center gap-4 mb-10 relative z-20 ${heroContent.isVisible ? 'animate-bounce-in delay-600' : 'opacity-0'}`}>
               <a 
                 href="#about" 
-                className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover-glow relative overflow-hidden group"
+                className="bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl relative overflow-hidden group"
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)', zIndex: 50 }}
               >
                 <span className="relative z-10">Pelajari Lebih Lanjut</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </a>
               <a 
                 href="/login" 
-                className="bg-transparent text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-110 hover:shadow-2xl border-2 border-white hover:bg-white hover:text-gray-900 relative overflow-hidden group"
+                className="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl border-2 border-white hover:bg-white hover:text-gray-900 relative overflow-hidden group"
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)', zIndex: 50 }}
               >
                 <span className="relative z-10">Login Sekarang</span>
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ zIndex: 0 }} />
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </a>
             </div>
 
@@ -270,7 +272,7 @@ const HomePage = () => {
         
         <div ref={ctaSection.ref} className="container mx-auto px-4 text-center relative z-10">
           <div className="relative inline-block">
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-md rounded-3xl -m-8"></div>
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-md rounded-3xl -m-8 z-0"></div>
             <div className="relative z-10 px-12 py-10">
               <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${ctaSection.isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
                   style={{ 
@@ -289,7 +291,7 @@ const HomePage = () => {
               <a 
                 href="/login" 
                 className={`bg-white text-gray-900 px-12 py-5 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl inline-block relative overflow-hidden group ${ctaSection.isVisible ? 'animate-bounce-in delay-400' : 'opacity-0'}`}
-                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)' }}
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)', zIndex: 50 }}
               >
                 <span className="relative z-10">Mulai Sekarang</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
