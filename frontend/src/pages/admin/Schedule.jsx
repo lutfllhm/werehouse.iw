@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from '../../utils/axios';
-import { FaWarehouse, FaClock, FaCheckCircle, FaExclamationCircle, FaSpinner, FaTruck, FaBoxes, FaClipboardList } from 'react-icons/fa';
+import { FaWarehouse, FaClock, FaCheckCircle, FaExclamationCircle, FaSpinner, FaTruck, FaBoxes, FaClipboardList, FaExpand, FaCompress } from 'react-icons/fa';
 
 const Schedule = () => {
   const [schedules, setSchedules] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [statusFilter, setStatusFilter] = useState('');
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     fetchSchedules();
@@ -20,9 +22,17 @@ const Schedule = () => {
       fetchSchedules();
     }, 30000);
 
+    // Listen for fullscreen changes
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+
     return () => {
       clearInterval(timer);
       clearInterval(refreshInterval);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
     };
   }, [statusFilter]);
 
@@ -82,8 +92,18 @@ const Schedule = () => {
     });
   };
 
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen().catch(err => {
+        console.error('Error attempting to enable fullscreen:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
+    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
       {/* Warehouse Header */}
       <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-3xl shadow-2xl p-8 mb-6 relative overflow-hidden">
         {/* Background Pattern */}
@@ -127,21 +147,36 @@ const Schedule = () => {
               </div>
             </div>
           </div>
-          <div className="text-right bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-            <div className="text-6xl font-bold text-white font-mono tabular-nums">
-              {currentTime.toLocaleTimeString('id-ID', { 
-                hour: '2-digit', 
-                minute: '2-digit',
-                second: '2-digit'
-              })}
-            </div>
-            <div className="text-lg text-blue-100 mt-2 font-medium">
-              {currentTime.toLocaleDateString('id-ID', { 
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-              })}
+          <div className="flex items-center space-x-4">
+            {/* Fullscreen Button */}
+            <button
+              onClick={toggleFullscreen}
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 border border-white/20 group"
+              title={isFullscreen ? "Exit Fullscreen (ESC)" : "Enter Fullscreen (F11)"}
+            >
+              {isFullscreen ? (
+                <FaCompress className="text-3xl group-hover:rotate-90 transition-transform duration-300" />
+              ) : (
+                <FaExpand className="text-3xl group-hover:rotate-90 transition-transform duration-300" />
+              )}
+            </button>
+            {/* Clock */}
+            <div className="text-right bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+              <div className="text-6xl font-bold text-white font-mono tabular-nums">
+                {currentTime.toLocaleTimeString('id-ID', { 
+                  hour: '2-digit', 
+                  minute: '2-digit',
+                  second: '2-digit'
+                })}
+              </div>
+              <div className="text-lg text-blue-100 mt-2 font-medium">
+                {currentTime.toLocaleDateString('id-ID', { 
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric'
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -382,7 +417,14 @@ const Schedule = () => {
           </div>
           <div className="text-right text-slate-400">
             <p className="text-sm font-medium">🔄 Auto-refresh setiap 30 detik</p>
-            <p className="text-xs mt-1">Powered by IWARE System</p>
+            <p className="text-xs mt-1">
+              {isFullscreen ? (
+                <span className="text-yellow-400 animate-pulse">📺 Mode Fullscreen Aktif - Tekan ESC untuk keluar</span>
+              ) : (
+                <span>💡 Klik tombol fullscreen untuk tampilan TV</span>
+              )}
+            </p>
+            <p className="text-xs opacity-75">Powered by IWARE System</p>
           </div>
         </div>
       </div>
