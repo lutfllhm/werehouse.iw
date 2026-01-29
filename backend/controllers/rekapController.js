@@ -29,7 +29,7 @@ exports.getRekapData = async (req, res) => {
       WHERE t.verified = TRUE
     `;
     const params = [];
-
+ 
     // Filter berdasarkan bulan dan tahun
     if (month && year) {
       query += ' AND MONTH(t.transaction_date) = ? AND YEAR(t.transaction_date) = ?';
