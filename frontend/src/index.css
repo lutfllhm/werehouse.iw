@@ -503,3 +503,25 @@ html {
   background-size: 200% 200%;
   animation: gradientShift 5s ease infinite;
 }
+
+/* Slow Spin Animation for Refresh Button */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2s linear infinite;
+}
+
+/* Line Clamp Utility */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
