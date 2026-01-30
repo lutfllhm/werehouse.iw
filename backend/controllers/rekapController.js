@@ -44,7 +44,7 @@ exports.getRekapData = async (req, res) => {
     query += ' ORDER BY t.transaction_date DESC';
 
     // Eksekusi query
-    const [transactions] = await db.query(query, params);
+    const [transactions] = await db.query(query, params);   
 
     // Hitung total nilai transaksi
     const totalAmount = transactions.reduce((sum, t) => sum + parseFloat(t.total_amount || 0), 0);
