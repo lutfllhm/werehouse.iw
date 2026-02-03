@@ -34,11 +34,19 @@ router.get('/health', (req, res) => {
   });
 });
 
+// Handle OPTIONS for all routes (CORS preflight)
+router.options('*', (req, res) => {
+  res.status(200).end();
+});
+
 // Informasi perusahaan (untuk halaman publik)
 router.get('/company', companyController.getCompanyInfo);
 
-// Login (menghasilkan JWT token)
-router.post('/auth/login', authController.login);
+// Login (menghasilkan JWT token) - MUST be before auth middleware
+router.post('/auth/login', (req, res, next) => {
+  console.log('Login route hit - no auth required');
+  next();
+}, authController.login);
 
 // ==================== PROTECTED ROUTES ====================
 // Semua route di bawah ini memerlukan JWT token
