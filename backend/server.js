@@ -26,10 +26,43 @@ const HOST = process.env.HOST || '0.0.0.0'; // Allow network access
 // ==================== MIDDLEWARE ====================
 
 // CORS: Mengizinkan request dari frontend (domain berbeda)
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : [
+      'http://localhost:5173',
+      'http://localhost:4173',
+      'https://werehouse-iw.vercel.app',
+      /\.vercel\.app$/
+    ];
+
 app.use(cors({
-  origin: '*', // Allow all origins untuk development
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is allowed
+    const isAllowed = allowedOrigins.some(allowed => {
+      if (typeof allowed === 'string') {
+        return allowed === origin;
+      }
+      // RegExp check
+      return allowed.test(origin);
+    });
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(null, true); // Still allow for development
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Body Parser: Untuk membaca JSON dari request body
 app.use(express.json());
