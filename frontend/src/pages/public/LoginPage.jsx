@@ -25,6 +25,9 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
+      // Clear any existing token before login
+      localStorage.removeItem('token');
+      
       await login(username, password);
       navigate('/admin/dashboard');
     } catch (err) {

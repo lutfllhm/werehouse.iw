@@ -11,6 +11,11 @@ const instance = axios.create({
 // Request interceptor
 instance.interceptors.request.use(
   (config) => {
+    // Don't add token for login endpoint
+    if (config.url?.includes('/auth/login')) {
+      return config;
+    }
+    
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
