@@ -19,15 +19,25 @@ const jwt = require('jsonwebtoken');
 const auth = (req, res, next) => {
   try {
     // Ambil token dari header Authorization (format: "Bearer <token>")
-    const token = req.header('Authorization')?.replace('Bearer ', '');
+    const authHeader = req.header('Authorization');
+    const token = authHeader?.replace('Bearer ', '');
+    
+    console.log('Auth middleware:', { 
+      path: req.path, 
+      hasAuthHeader: !!authHeader,
+      hasToken: !!token 
+    });
     
     // Jika token tidak ada, tolak akses
     if (!token) {
+      console.log('No token provided');
       return res.status(401).json({ message: 'Akses ditolak. Token tidak ditemukan.' });
     }
 
     // Verifikasi token menggunakan JWT secret
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    console.log('Token verified:', { userId: decoded.id, username: decoded.username });
     
     // Simpan data user dari token ke req.user
     req.user = decoded;
@@ -35,8 +45,9 @@ const auth = (req, res, next) => {
     // Lanjutkan ke controller berikutnya
     next();
   } catch (error) {
+    console.error('Auth middleware error:', error.message);
     // Jika token tidak valid atau expired
-    res.status(401).json({ message: 'Token tidak valid.' });
+    res.status(401).json({ message: 'Token tidak valid.', error: error.message });
   }
 };
 
