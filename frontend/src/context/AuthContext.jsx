@@ -30,7 +30,10 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data.user);
     } catch (error) {
       console.error('Fetch profile error:', error);
-      logout();
+      // Only logout if it's an authentication error (401)
+      if (error.response?.status === 401) {
+        logout();
+      }
     } finally {
       setLoading(false);
     }

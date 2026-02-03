@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from '../../utils/axios';
+import axios from 'axios';
 import { FaWarehouse, FaChartLine, FaUsers, FaShieldAlt } from 'react-icons/fa';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
@@ -18,10 +18,18 @@ const HomePage = () => {
 
   const fetchCompanyInfo = async () => {
     try {
-      const response = await axios.get('/company');
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const response = await axios.get(`${apiUrl}/company`);
       setCompanyInfo(response.data.data);
     } catch (error) {
       console.error('Error fetching company info:', error);
+      // Set default company info if API fails
+      setCompanyInfo({
+        description: 'IWARE adalah sistem manajemen gudang modern yang membantu mengelola stok barang dan transaksi dengan efisien.',
+        business_field: 'Manajemen Gudang dan Logistik',
+        vision: 'Menjadi solusi terdepan dalam manajemen gudang yang terintegrasi.',
+        mission: 'Memberikan kemudahan dalam pengelolaan gudang dengan teknologi modern.'
+      });
     }
   };
 
