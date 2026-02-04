@@ -97,12 +97,13 @@ const HomePage = () => {
             </p>
             
             {/* CTA Buttons */}
-            <div className={`flex flex-col sm:flex-row justify-center gap-5 mb-16 ${heroContent.isVisible ? 'animate-bounce-in delay-500' : 'opacity-0'}`}>
+            <div className={`flex flex-col sm:flex-row justify-center gap-5 mb-16 relative z-20 ${heroContent.isVisible ? 'animate-bounce-in delay-500' : 'opacity-0'}`}>
               <a 
                 href="#about" 
-                className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)' }}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-2 text-white">
                   <FaRocket className="text-xl" />
                   Pelajari Lebih Lanjut
                 </span>
@@ -110,9 +111,10 @@ const HomePage = () => {
               </a>
               <a 
                 href="/login" 
-                className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-white/10 backdrop-blur-md rounded-full border-2 border-white/50 overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900 hover:shadow-2xl"
+                className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-white/20 backdrop-blur-md rounded-full border-2 border-white overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white shadow-xl hover:shadow-2xl"
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)' }}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-2 group-hover:text-gray-900 transition-colors duration-300">
                   <FaCheckCircle className="text-xl" />
                   Login Sekarang
                 </span>
@@ -328,23 +330,25 @@ const HomePage = () => {
               #everywhereadaiware
             </p>
             
-            <div className={`flex flex-col sm:flex-row justify-center gap-5 mb-12 ${ctaSection.isVisible ? 'animate-bounce-in delay-400' : 'opacity-0'}`}>
+            <div className={`flex flex-col sm:flex-row justify-center gap-5 mb-12 relative z-20 ${ctaSection.isVisible ? 'animate-bounce-in delay-400' : 'opacity-0'}`}>
               <a 
                 href="/login" 
-                className="group relative inline-flex items-center justify-center px-12 py-5 text-lg font-bold text-gray-900 bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                className="group relative inline-flex items-center justify-center px-12 py-5 text-lg font-bold text-gray-900 bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)' }}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-2 text-gray-900 group-hover:text-white transition-colors duration-300">
                   <FaRocket className="text-xl" />
                   Mulai Sekarang
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </a>
               
               <a 
                 href="#features" 
-                className="group relative inline-flex items-center justify-center px-12 py-5 text-lg font-bold text-white bg-white/10 backdrop-blur-md rounded-full border-2 border-white/50 overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-2xl"
+                className="group relative inline-flex items-center justify-center px-12 py-5 text-lg font-bold text-white bg-white/20 backdrop-blur-md rounded-full border-2 border-white overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white shadow-xl hover:shadow-2xl"
+                style={{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)' }}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-2 group-hover:text-gray-900 transition-colors duration-300">
                   <FaCheckCircle className="text-xl" />
                   Lihat Fitur
                 </span>
