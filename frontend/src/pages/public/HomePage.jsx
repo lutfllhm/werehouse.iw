@@ -338,10 +338,11 @@ const HomePage = () => {
               #everywhereadaiware
             </p>
             
-            <div className={`flex flex-col sm:flex-row justify-center gap-5 mb-12 relative z-50 ${ctaSection.isVisible ? 'animate-bounce-in delay-400' : 'opacity-0'}`}>
+            <div className="flex flex-col sm:flex-row justify-center gap-5 mb-12 relative z-50">
               <a 
                 href="/login" 
                 className="relative z-50 inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-gray-900 bg-white rounded-full transition-all duration-300 hover:bg-gray-100 hover:scale-105 shadow-2xl"
+                style={{ opacity: 1, visibility: 'visible' }}
               >
                 <FaRocket className="text-xl mr-2" />
                 Mulai Sekarang
@@ -350,6 +351,7 @@ const HomePage = () => {
               <a 
                 href="#features" 
                 className="relative z-50 inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-white/20 backdrop-blur-md rounded-full border-2 border-white transition-all duration-300 hover:bg-white hover:text-gray-900 hover:scale-105 shadow-2xl"
+                style={{ opacity: 1, visibility: 'visible' }}
               >
                 <FaCheckCircle className="text-xl mr-2" />
                 Lihat Fitur
