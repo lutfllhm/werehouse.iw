@@ -134,8 +134,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Features Section - Redesigned */}
-      <section id="features" className="py-32 bg-white relative overflow-hidden">
+      {/* Features Section - Optimized */}
+      <section id="features" className="py-20 bg-white relative overflow-hidden">
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -146,128 +146,128 @@ const HomePage = () => {
         
         <div ref={featuresSection.ref} className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-14">
             <div className={`inline-block ${featuresSection.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4">
+              <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold mb-3">
                 FITUR UNGGULAN
               </span>
             </div>
-            <h2 className={`text-5xl md:text-6xl font-bold text-gray-900 mb-6 ${featuresSection.isVisible ? 'animate-fade-in-up delay-100' : 'opacity-0'}`}>
+            <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 ${featuresSection.isVisible ? 'animate-fade-in-up delay-100' : 'opacity-0'}`}>
               Keunggulan Sistem
             </h2>
-            <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed ${featuresSection.isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
-              Solusi terintegrasi untuk manajemen gudang yang efisien, akurat, dan dapat diandalkan
+            <p className={`text-lg text-gray-600 max-w-2xl mx-auto ${featuresSection.isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
+              Solusi terintegrasi untuk manajemen gudang yang efisien dan dapat diandalkan
             </p>
           </div>
           
           {/* Features Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Feature 1 - Large Card */}
-            <div className={`group relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-10 transition-all duration-500 hover:shadow-2xl border border-blue-100 ${featuresSection.isVisible ? 'animate-slide-in-left-custom delay-300' : 'opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-3xl group-hover:bg-blue-300/40 transition-all duration-500" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {/* Feature 1 */}
+            <div className={`group relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl border border-blue-100 ${featuresSection.isVisible ? 'animate-slide-in-left-custom delay-300' : 'opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-200/30 rounded-full blur-2xl group-hover:bg-blue-300/40 transition-all duration-500" />
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <FaWarehouse className="text-white text-3xl" />
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <FaWarehouse className="text-white text-2xl" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Manajemen Gudang Terpadu</h3>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Kelola seluruh operasional gudang dalam satu platform. Dari penerimaan barang, penyimpanan, hingga pengiriman - semua terintegrasi dengan sempurna.
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Manajemen Gudang Terpadu</h3>
+                <p className="text-base text-gray-700 leading-relaxed mb-4">
+                  Kelola seluruh operasional gudang dalam satu platform. Dari penerimaan barang hingga pengiriman.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-blue-600 mt-1 flex-shrink-0" />
-                    <span>Tracking SO masuk dan keluar real-time</span>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span>Tracking SO real-time</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-blue-600 mt-1 flex-shrink-0" />
-                    <span>Manajemen stok otomatis dan akurat</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span>Manajemen stok otomatis</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-blue-600 mt-1 flex-shrink-0" />
-                    <span>Dashboard monitoring komprehensif</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span>Dashboard monitoring</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Feature 2 - Large Card */}
-            <div className={`group relative bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10 transition-all duration-500 hover:shadow-2xl border border-green-100 ${featuresSection.isVisible ? 'animate-slide-in-right-custom delay-400' : 'opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/30 rounded-full blur-3xl group-hover:bg-green-300/40 transition-all duration-500" />
+            {/* Feature 2 */}
+            <div className={`group relative bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl border border-green-100 ${featuresSection.isVisible ? 'animate-slide-in-right-custom delay-400' : 'opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-24 h-24 bg-green-200/30 rounded-full blur-2xl group-hover:bg-green-300/40 transition-all duration-500" />
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <FaClock className="text-white text-3xl" />
+                <div className="w-14 h-14 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <FaClock className="text-white text-2xl" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Penjadwalan Tepat Waktu</h3>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Sistem penjadwalan cerdas yang memastikan setiap transaksi berjalan sesuai timeline. Tidak ada lagi keterlambatan atau kesalahan koordinasi.
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Penjadwalan Tepat Waktu</h3>
+                <p className="text-base text-gray-700 leading-relaxed mb-4">
+                  Sistem penjadwalan cerdas yang memastikan setiap transaksi berjalan sesuai timeline.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-green-600 mt-1 flex-shrink-0" />
-                    <span>Notifikasi otomatis untuk setiap jadwal</span>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Notifikasi otomatis</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-green-600 mt-1 flex-shrink-0" />
-                    <span>Kalender terintegrasi untuk planning</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Kalender terintegrasi</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-green-600 mt-1 flex-shrink-0" />
-                    <span>Reminder dan alert system</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Reminder system</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Feature 3 - Large Card */}
-            <div className={`group relative bg-gradient-to-br from-purple-50 to-violet-50 rounded-3xl p-10 transition-all duration-500 hover:shadow-2xl border border-purple-100 ${featuresSection.isVisible ? 'animate-slide-in-left-custom delay-500' : 'opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-200/30 rounded-full blur-3xl group-hover:bg-purple-300/40 transition-all duration-500" />
+            {/* Feature 3 */}
+            <div className={`group relative bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl border border-purple-100 ${featuresSection.isVisible ? 'animate-slide-in-left-custom delay-500' : 'opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl group-hover:bg-purple-300/40 transition-all duration-500" />
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-violet-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <FaSync className="text-white text-3xl" />
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-violet-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <FaSync className="text-white text-2xl" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Integrasi Accurate Online</h3>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Sinkronisasi sempurna dengan Accurate Online. Data finansial dan inventory Anda selalu up-to-date tanpa perlu input manual.
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Integrasi Accurate Online</h3>
+                <p className="text-base text-gray-700 leading-relaxed mb-4">
+                  Sinkronisasi sempurna dengan Accurate Online. Data selalu up-to-date tanpa input manual.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-purple-600 mt-1 flex-shrink-0" />
-                    <span>Sinkronisasi data real-time</span>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-purple-600 mt-0.5 flex-shrink-0" />
+                    <span>Sinkronisasi real-time</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-purple-600 mt-1 flex-shrink-0" />
-                    <span>Tidak mengubah data existing</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-purple-600 mt-0.5 flex-shrink-0" />
+                    <span>Data tetap aman</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-purple-600 mt-1 flex-shrink-0" />
-                    <span>API integration yang aman</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-purple-600 mt-0.5 flex-shrink-0" />
+                    <span>API integration</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Feature 4 - Large Card */}
-            <div className={`group relative bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-10 transition-all duration-500 hover:shadow-2xl border border-orange-100 ${featuresSection.isVisible ? 'animate-slide-in-right-custom delay-600' : 'opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-200/30 rounded-full blur-3xl group-hover:bg-orange-300/40 transition-all duration-500" />
+            {/* Feature 4 */}
+            <div className={`group relative bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl border border-orange-100 ${featuresSection.isVisible ? 'animate-slide-in-right-custom delay-600' : 'opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-24 h-24 bg-orange-200/30 rounded-full blur-2xl group-hover:bg-orange-300/40 transition-all duration-500" />
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-600 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <FaChartLine className="text-white text-3xl" />
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-600 to-amber-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <FaChartLine className="text-white text-2xl" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Efisien & Fleksibel</h3>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Sistem yang dapat disesuaikan dengan kebutuhan bisnis Anda. Fleksibel namun tetap terstruktur untuk efisiensi maksimal.
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Efisien & Fleksibel</h3>
+                <p className="text-base text-gray-700 leading-relaxed mb-4">
+                  Sistem yang dapat disesuaikan dengan kebutuhan bisnis Anda untuk efisiensi maksimal.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-orange-600 mt-1 flex-shrink-0" />
-                    <span>Customizable workflow sesuai kebutuhan</span>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span>Customizable workflow</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-orange-600 mt-1 flex-shrink-0" />
-                    <span>Reporting dan analytics mendalam</span>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span>Reporting & analytics</span>
                   </li>
-                  <li className="flex items-start gap-3 text-gray-700">
-                    <FaCheckCircle className="text-orange-600 mt-1 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaCheckCircle className="text-orange-600 mt-0.5 flex-shrink-0" />
                     <span>User-friendly interface</span>
                   </li>
                 </ul>
@@ -305,8 +305,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* About Section - Redesigned */}
-      <section id="about" className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* About Section - Optimized */}
+      <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -317,65 +317,64 @@ const HomePage = () => {
         
         <div ref={aboutSection.ref} className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-14">
             <div className={`inline-block ${aboutSection.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <span className="inline-block px-4 py-2 bg-indigo-50 text-indigo-600 rounded-full text-sm font-semibold mb-4">
+              <span className="inline-block px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-xs font-semibold mb-3">
                 TENTANG KAMI
               </span>
             </div>
-            <h2 className={`text-5xl md:text-6xl font-bold text-gray-900 mb-6 ${aboutSection.isVisible ? 'animate-fade-in-up delay-100' : 'opacity-0'}`}>
+            <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 ${aboutSection.isVisible ? 'animate-fade-in-up delay-100' : 'opacity-0'}`}>
               Mengenal IWARE
             </h2>
-            <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed ${aboutSection.isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
+            <p className={`text-lg text-gray-600 max-w-2xl mx-auto ${aboutSection.isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
               Komitmen kami untuk memberikan solusi terbaik dalam manajemen gudang
             </p>
           </div>
           
           {companyInfo && (
-            <div className="max-w-7xl mx-auto">
-              {/* Main Description - Full Width Hero Card */}
-              <div className={`relative mb-12 ${aboutSection.isVisible ? 'animate-zoom-in delay-300' : 'opacity-0'}`}>
-                <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-12 md:p-16 shadow-2xl overflow-hidden">
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+            <div className="max-w-6xl mx-auto">
+              {/* Main Description - Hero Card */}
+              <div className={`relative mb-8 ${aboutSection.isVisible ? 'animate-zoom-in delay-300' : 'opacity-0'}`}>
+                <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-2xl p-8 md:p-10 shadow-xl overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
                   
                   <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                        <FaWarehouse className="text-white text-3xl" />
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                        <FaWarehouse className="text-white text-xl" />
                       </div>
-                      <h3 className="text-3xl md:text-4xl font-bold text-white">Deskripsi Perusahaan</h3>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white">Deskripsi Perusahaan</h3>
                     </div>
-                    <p className="text-xl md:text-2xl text-white/95 leading-relaxed font-light">
+                    <p className="text-lg md:text-xl text-white/95 leading-relaxed">
                       {companyInfo.description}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Business Field - Highlighted Card */}
-              <div className={`mb-12 ${aboutSection.isVisible ? 'animate-slide-in-left-custom delay-400' : 'opacity-0'}`}>
-                <div className="bg-white rounded-3xl p-10 md:p-12 shadow-xl border border-gray-100">
-                  <div className="flex flex-col md:flex-row items-start gap-8">
+              {/* Business Field */}
+              <div className={`mb-8 ${aboutSection.isVisible ? 'animate-slide-in-left-custom delay-400' : 'opacity-0'}`}>
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                  <div className="flex flex-col md:flex-row items-start gap-6">
                     <div className="flex-shrink-0">
-                      <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <FaChartLine className="text-white text-3xl" />
+                      <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <FaChartLine className="text-white text-2xl" />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-4">Bidang Usaha</h3>
-                      <p className="text-xl text-gray-700 leading-relaxed">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-3">Bidang Usaha</h3>
+                      <p className="text-base text-gray-700 leading-relaxed mb-4">
                         {companyInfo.business_field}
                       </p>
-                      <div className="mt-6 flex flex-wrap gap-3">
-                        <span className="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-semibold">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-semibold">
                           Warehouse Management
                         </span>
-                        <span className="px-4 py-2 bg-teal-50 text-teal-700 rounded-full text-sm font-semibold">
+                        <span className="px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-semibold">
                           Logistics
                         </span>
-                        <span className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold">
+                        <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold">
                           Supply Chain
                         </span>
                       </div>
@@ -384,85 +383,65 @@ const HomePage = () => {
                 </div>
               </div>
 
-              {/* Vision & Mission - Side by Side Premium Cards */}
-              <div className="grid md:grid-cols-2 gap-8">
+              {/* Vision & Mission */}
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {/* Vision Card */}
                 <div className={`group relative ${aboutSection.isVisible ? 'animate-slide-in-left-custom delay-500' : 'opacity-0'}`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
-                  <div className="relative bg-white rounded-3xl p-10 shadow-xl border border-gray-100 h-full">
-                    <div className="flex items-start gap-6 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-                        <FaRocket className="text-white text-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                  <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+                        <FaRocket className="text-white text-xl" />
                       </div>
                       <div>
-                        <span className="inline-block px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-semibold mb-3">
+                        <span className="inline-block px-2 py-0.5 bg-purple-50 text-purple-600 rounded-full text-xs font-semibold mb-2">
                           VISION
                         </span>
-                        <h3 className="text-3xl font-bold text-gray-900">Visi Kami</h3>
+                        <h3 className="text-2xl font-bold text-gray-900">Visi Kami</h3>
                       </div>
                     </div>
-                    <p className="text-lg text-gray-700 leading-relaxed">
+                    <p className="text-base text-gray-700 leading-relaxed">
                       {companyInfo.vision}
                     </p>
-                    
-                    {/* Decorative Quote */}
-                    <div className="mt-8 pt-6 border-t border-gray-200">
-                      <svg className="w-8 h-8 text-purple-200 mb-3" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                      <p className="text-sm text-gray-500 italic">
-                        Memimpin transformasi digital dalam industri logistik
-                      </p>
-                    </div>
                   </div>
                 </div>
 
                 {/* Mission Card */}
                 <div className={`group relative ${aboutSection.isVisible ? 'animate-slide-in-right-custom delay-600' : 'opacity-0'}`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-rose-200 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
-                  <div className="relative bg-white rounded-3xl p-10 shadow-xl border border-gray-100 h-full">
-                    <div className="flex items-start gap-6 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-rose-600 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-                        <FaShieldAlt className="text-white text-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-rose-200 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                  <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-pink-600 to-rose-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+                        <FaShieldAlt className="text-white text-xl" />
                       </div>
                       <div>
-                        <span className="inline-block px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-semibold mb-3">
+                        <span className="inline-block px-2 py-0.5 bg-pink-50 text-pink-600 rounded-full text-xs font-semibold mb-2">
                           MISSION
                         </span>
-                        <h3 className="text-3xl font-bold text-gray-900">Misi Kami</h3>
+                        <h3 className="text-2xl font-bold text-gray-900">Misi Kami</h3>
                       </div>
                     </div>
-                    <p className="text-lg text-gray-700 leading-relaxed">
+                    <p className="text-base text-gray-700 leading-relaxed">
                       {companyInfo.mission}
                     </p>
-                    
-                    {/* Decorative Quote */}
-                    <div className="mt-8 pt-6 border-t border-gray-200">
-                      <svg className="w-8 h-8 text-pink-200 mb-3" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                      <p className="text-sm text-gray-500 italic">
-                        Memberikan nilai terbaik untuk setiap klien kami
-                      </p>
-                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Bottom CTA Banner */}
-              <div className={`mt-12 ${aboutSection.isVisible ? 'animate-fade-in-up delay-700' : 'opacity-0'}`}>
-                <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-10 md:p-12 text-center shadow-2xl">
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <div className={`${aboutSection.isVisible ? 'animate-fade-in-up delay-700' : 'opacity-0'}`}>
+                <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 text-center shadow-xl">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                     Siap Meningkatkan Efisiensi Gudang Anda?
                   </h3>
-                  <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Bergabunglah dengan perusahaan-perusahaan yang telah mempercayai IWARE
+                  <p className="text-base text-gray-300 mb-6 max-w-xl mx-auto">
+                    Bergabunglah dengan perusahaan yang telah mempercayai IWARE
                   </p>
                   <a 
                     href="/login" 
-                    className="inline-flex items-center gap-3 px-10 py-4 bg-white text-gray-900 rounded-full font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl"
+                    className="inline-flex items-center gap-2 px-8 py-3 bg-white text-gray-900 rounded-full font-bold hover:scale-105 transition-transform duration-300 shadow-lg"
                   >
-                    <FaRocket className="text-xl" />
+                    <FaRocket />
                     Mulai Sekarang
                   </a>
                 </div>
