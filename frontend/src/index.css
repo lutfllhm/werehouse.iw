@@ -343,6 +343,17 @@ html {
   }
 }
 
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes zoomIn {
   0% {
     opacity: 0;
@@ -382,6 +393,26 @@ html {
   }
 }
 
+@keyframes expandWidth {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -410,6 +441,29 @@ html {
   50% {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.3);
   }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-expand {
+  animation: expandWidth 0.8s ease-out forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2s ease-in-out infinite;
 }
 
 .animate-slide-in-left-custom {

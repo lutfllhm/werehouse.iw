@@ -61,8 +61,8 @@ const HomePage = () => {
         <div ref={heroContent.ref} className="container mx-auto px-6 lg:px-12 relative z-10 py-20">
           <div className="max-w-4xl mx-auto text-center">
             {/* Logo and Title */}
-            <div className={`flex flex-col items-center mb-6 ${heroContent.isVisible ? 'animate-zoom-in' : 'opacity-0'}`}>
-              <div className="relative mb-4">
+            <div className="flex flex-col items-center mb-6 animate-fade-in">
+              <div className="relative mb-4 animate-scale-in" style={{ animationDelay: '0.2s' }}>
                 <div className="absolute inset-0 bg-white/15 rounded-full blur-xl"></div>
                 <img 
                   src="/img/lg.png" 
@@ -71,36 +71,37 @@ const HomePage = () => {
                   loading="lazy"
                 />
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight"
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight animate-slide-up"
                   style={{ 
                     textShadow: '0 4px 30px rgba(0, 0, 0, 0.6)',
-                    fontFamily: 'system-ui, -apple-system, sans-serif'
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    animationDelay: '0.3s'
                   }}>
                 IWARE
               </h1>
             </div>
             
             {/* Subtitle */}
-            <div className={`mb-6 ${heroContent.isVisible ? 'animate-fade-in-up delay-300' : 'opacity-0'}`}>
+            <div className="mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <h2 className="text-lg md:text-xl text-white font-medium mb-3"
                   style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.7)' }}>
                 Sistem Penjadwalan SO Gudang
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full" />
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full animate-expand" />
             </div>
             
             {/* Description */}
-            <p className={`text-sm md:text-base text-white/90 font-light max-w-2xl mx-auto mb-8 leading-relaxed ${heroContent.isVisible ? 'animate-fade-in-up delay-400' : 'opacity-0'}`}
-               style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}>
+            <p className="text-sm md:text-base text-white/90 font-light max-w-2xl mx-auto mb-8 leading-relaxed animate-fade-in"
+               style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)', animationDelay: '0.5s' }}>
               Kelola stok barang, transaksi, dan jadwal pengiriman dengan mudah. 
               Terintegrasi dengan Accurate Online untuk efisiensi maksimal.
             </p>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 relative z-50">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 relative z-50 animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <a 
                 href="#about" 
-                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-blue-600 rounded-full transition-all duration-300 hover:bg-blue-700 hover:scale-105 shadow-2xl"
+                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-blue-600 rounded-full transition-all duration-300 hover:bg-blue-700 hover:scale-105 hover:shadow-2xl shadow-xl transform hover:-translate-y-1"
                 style={{ opacity: 1, visibility: 'visible' }}
               >
                 <FaRocket className="text-lg mr-2" />
@@ -108,7 +109,7 @@ const HomePage = () => {
               </a>
               <a 
                 href="/login" 
-                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-blue-600 bg-white rounded-full border-2 border-white transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-2xl"
+                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-blue-600 bg-white rounded-full border-2 border-white transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-2xl shadow-xl transform hover:-translate-y-1"
                 style={{ opacity: 1, visibility: 'visible' }}
               >
                 <FaCheckCircle className="text-lg mr-2" />
@@ -117,7 +118,7 @@ const HomePage = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <div className={`animate-bounce ${heroContent.isVisible ? 'animate-fade-in-up delay-700' : 'opacity-0'}`}>
+            <div className="animate-bounce-slow animate-fade-in" style={{ animationDelay: '0.8s' }}>
               <a href="#features" className="inline-flex flex-col items-center text-white/70 hover:text-white transition-colors">
                 <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
