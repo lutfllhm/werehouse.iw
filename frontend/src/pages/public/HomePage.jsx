@@ -97,17 +97,19 @@ const HomePage = () => {
             </p>
             
             {/* CTA Buttons */}
-            <div className={`flex flex-col sm:flex-row justify-center gap-4 mb-12 relative z-50 ${heroContent.isVisible ? 'animate-bounce-in delay-500' : 'opacity-0'}`}>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 relative z-50">
               <a 
                 href="#about" 
-                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-blue-600 rounded-full transition-all duration-300 hover:bg-blue-700 hover:scale-105 shadow-xl hover:shadow-2xl"
+                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-blue-600 rounded-full transition-all duration-300 hover:bg-blue-700 hover:scale-105 shadow-2xl"
+                style={{ opacity: 1, visibility: 'visible' }}
               >
                 <FaRocket className="text-lg mr-2" />
                 Pelajari Lebih Lanjut
               </a>
               <a 
                 href="/login" 
-                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-blue-600 bg-white rounded-full border-2 border-white transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-xl hover:shadow-2xl"
+                className="relative z-50 inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-blue-600 bg-white rounded-full border-2 border-white transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-2xl"
+                style={{ opacity: 1, visibility: 'visible' }}
               >
                 <FaCheckCircle className="text-lg mr-2" />
                 Login Sekarang
